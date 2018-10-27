@@ -1,0 +1,31 @@
+<div class="container">
+  <hr>
+  <hr>
+  <div class="row">
+
+      <div class="col-lg-12">
+        <!--<input type="text" [(ngModel)]= "city">-->
+
+        <select [(ngModel)]="city" name="first">
+          <option *ngFor="let o of countries">
+             {{o.name}}
+          </option>
+        </select>
+
+        <button type="submit" (click)="getWeather()">Meteo</button>
+        {{info.weather[0].description}}
+{{info.main.temp-273.3}}
+
+</div>
+</div>
+</div>
+
+<!--<form [formGroup]="countryForm">
+  <select formControlName="countryControl">
+    <option [ngValue]="countries" *ngFor="let country of countries">
+      {{country.name}}
+    </option>
+  </select>
+ </form>-->
+
+
