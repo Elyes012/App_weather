@@ -1,0 +1,10 @@
+
+
+<div class="text" *ngFor="let item of log | async">
+
+ <h4> Name : {{item.data.name }}</h4>
+ <h4> temperature : {{item.data.main.temp}}</h4>
+ <h4> humidity : {{item.data.main.humidity}}</h4>
+ <h4> time : {{item.time | date : 'shortTime'}}</h4>
+</div>
+

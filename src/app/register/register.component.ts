@@ -1,19 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  firstname: String;
-  lastname: String;
-  email: String;
-  city: String;
-  password: String;
+  item: Observable<any[]>;
+  itemusers; //: AngularFireList<any>;
+
   formregister: FormGroup;
-  constructor( private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router, private db: AngularFireDatabase) {
+    this.itemusers = db.list('UsersList').valueChanges();
+
+
     this.formregister = this.fb.group({
       firstname: ['', [Validators.required, Validators.minLength(4)]],
       lastname: ['', [Validators.required, Validators.minLength(4)]],
@@ -25,14 +29,21 @@ export class RegisterComponent implements OnInit {
 
 
   registerUser() {
+    console.log(this.formregister.value);
     if (this.formregister.valid) {
-      alert('register work');
-    this.router.navigateByUrl('/dashbord');
+      this.db.list('UsersList').push({
+        firstname: this.formregister.value.firstname,
+        lastname: this.formregister.value.lastname,
+        city: this.formregister.value.city,
+        password: this.formregister.value.password,
+        email: this.formregister.value.email,
+      });
+
 
     }
+    this.router.navigateByUrl('/login');
   }
 
   ngOnInit() {
   }
-
 }

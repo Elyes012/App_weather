@@ -8,16 +8,25 @@ import { NavsComponent } from './navs/navs.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MydashComponent } from './mydash/mydash.component';
 import {HttpModule} from '@angular/http';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
+import { TestdashComponent } from './testdash/testdash.component';
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './auth.service';
+import { LogComponent } from './log/log.component';
+import { AuthsGuard } from './core/auths.guard';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     RegisterComponent,
     NavsComponent,
-    MydashComponent
+    MydashComponent,
+    TestdashComponent,
+    LoginComponent,
+    LogComponent
 
 
   ],
@@ -27,8 +36,11 @@ import { environment } from '../environments/environment';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  providers: [],
+  providers: [AuthService, AuthsGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
