@@ -35,22 +35,10 @@ export class LoginComponent implements OnInit {
 
 
   loginSimple() {
-    /*if (this.loginForm.valid) {
-      this.message= '';
-    this.authService.login(this.loginForm.value).subscribe( res => {
-        console.log('login component ==>', res);
-        if (res.json().message === 'ok'){
-          this.router.navigateByUrl('/testdash');
-        }else{
-          this.message = res.json().message;
-        }
-      });
-    }*/
   
-    
     if (this.loginForm.valid) {
     this.authService.login(this.loginForm.value);
-          this.router.navigateByUrl('/testdash');
+         
         }
   
     }
