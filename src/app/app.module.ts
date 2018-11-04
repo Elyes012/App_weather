@@ -17,6 +17,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
 import { LogComponent } from './log/log.component';
 import { AuthsGuard } from './core/auths.guard';
+import { DashbordComponent } from './dashbord/dashbord.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { AuthsGuard } from './core/auths.guard';
     MydashComponent,
     TestdashComponent,
     LoginComponent,
-    LogComponent
+    LogComponent,
+    DashbordComponent
 
 
   ],

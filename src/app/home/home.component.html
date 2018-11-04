@@ -1,22 +1,50 @@
 
-<app-navs></app-navs>
+ 
 
-<div class="container">
-    <hr>
-    <hr>
+ <!-- News jumbotron -->
+<div class="jumbotron text-center hoverable p-4">
+
+    <!-- Grid row -->
     <div class="row">
-
-        <div class="col-lg-12">
-<div class="jumbotron">
-    <h1 class="display-4">Hello, world!</h1>
-    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-    <hr class="my-4">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-    <p class="lead">
-        <button type="button" class="btn btn-primary" (click)="btnregister()">Register</button>
-    </p>
+  
+      <!-- Grid column -->
+      <div class="col-md-4 offset-md-1 mx-3 my-3">
+  
+        <!-- Featured image -->
+        <div class="view overlay">
+          <img src="https://i.imgur.com/1dnSOMn.png" class="img-fluid" alt="Sample image for first version of blog listing">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+  
+      </div>
+      <!-- Grid column -->
+  
+      <!-- Grid column -->
+      <div class="col-md-7 text-md-left ml-3 mt-3">
+  
+        <!-- Excerpt -->
+        <a href="#!" class="green-text">
+          <h6 class="h6 pb-1"><i class="fa fa-desktop pr-1"></i> Work</h6>
+        </a>
+  
+        <h4 class="h4 mb-4">This is title of the news</h4>
+  
+        <p class="font-weight-normal">Météo, Chaîne météo, Prévisions météo des prévisions météorologiques quotidiennes et horaires
+            L'application de prévisions météo est une chaîne météo qui dispose d'informations météorologiques précises.
+            
+            Les prévisions météo sont très utiles pour tout le monde. Si vous connaissez l'information météorologique, vous pouvez préparer votre plan avec soin, vous réussirez au travail et aurez une meilleure vie.</p>
+        <p class="font-weight-normal">by <a><strong>Elyes Maamouri</strong></a>, 05/11/2018</p>
+  
+        <a class="btn btn-success" (click)="btnregister()">Register</a>
+  
+      </div>
+      <!-- Grid column -->
+  
+    </div>
+    <!-- Grid row -->
+  
   </div>
-</div>
-</div>
-</div>
-
+  <!-- News jumbotron -->
+ 
