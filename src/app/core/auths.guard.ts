@@ -19,10 +19,5 @@ return false;
   return true;
 }
 }));
-      /*if (this.authService.login) {
-        this.router.navigate(['/testdash']);
-        return true;
-      }else{
-      }*/
-  }
+}
 }

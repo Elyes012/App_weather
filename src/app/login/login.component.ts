@@ -29,8 +29,6 @@ export class LoginComponent implements OnInit {
     this.authService.loginGoogle();
   }
 
-
-
   loginSimple() {
     if (this.loginForm.valid) {
     this.authService.login(this.loginForm.value);

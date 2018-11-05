@@ -1,0 +1,53 @@
+
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm" *ngFor="let item of items | async">
+
+      <div class="weather-card one">
+
+        <div class="top">
+          <div class="wrapper">
+            <div class="mynav">
+                <a (click)="deleteItem(item.key)" ><h3 class="btnDelete"><i class="far fa-trash-alt"></i></h3></a>
+
+        </div>
+            <h4 class="location"> {{item.time | date : 'short'}}</h4>
+            <h1 class="heading">Clear night</h1>
+
+            <h3 class="location">{{item.data.name }}</h3>
+
+            <p class="temp">
+              <span class="temp-value">{{roundValue(item.data.main.temp-273.15)}}</span>
+              <span class="deg">0</span>
+              <a href="javascript:;"><span class="temp-type">C</span></a>
+            </p>
+          </div>
+        </div>
+        <div class="bottom">
+          <div class="wrapper">
+            <ul class="forecast">
+
+              <li class="active">
+                <span class="date">Temp Max</span>
+                <span class="lnr lnr-sun condition">
+                  <span class="temp">{{roundValue(item.data.main.temp_max-273.15)}}<span class="deg">0</span><span class="temp-type">C</span></span>
+                </span>
+              </li>
+              <li>
+                <span class="date">Temp Min</span>
+                <span class="lnr lnr-cloud condition">
+                  <span class="temp">{{roundValue(item.data.main.temp_min-273.15)}}<span class="deg">0</span><span class="temp-type">C</span></span>
+                </span>
+
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

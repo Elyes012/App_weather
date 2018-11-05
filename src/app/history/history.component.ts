@@ -4,14 +4,15 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth.service';
+
 @Component({
-  selector: 'app-log',
-  templateUrl: './log.component.html',
-  styleUrls: ['./log.component.css']
+  selector: 'app-history',
+  templateUrl: './history.component.html',
+  styleUrls: ['./history.component.css']
 })
-export class LogComponent implements OnInit {
-  datas;
-  log;
+export class HistoryComponent implements OnInit {
+
+  logData;
   key: any;
   itemsRef: AngularFireList<any>;
   items: Observable<any[]>;
@@ -25,12 +26,12 @@ export class LogComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.log = this.weatherService.getData();
-    console.log('from log', this.log);
+    this.logData = this.weatherService.getData();
+    console.log('from log', this.logData);
 
   }
   deleteItem(key: string) {
-    console.log('keyyy', key);
+    console.log('key', key);
     this.itemsRef.remove(key);
   }
 

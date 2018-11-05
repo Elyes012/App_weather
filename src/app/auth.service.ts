@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/internal/operators/map';
 
 @Injectable({
   providedIn: 'root'
@@ -13,31 +14,28 @@ user;
   constructor(public fauth: AngularFireAuth, private router: Router) { }
   loginGoogle() {
     return this.fauth.auth.signInWithPopup(new auth.GoogleAuthProvider()).then(() => {
-      this.router.navigateByUrl('/testdash');
+      this.router.navigateByUrl('/dashbord');
       // this.fauth.user.subscribe(user => this.user = user);
      // return this.fauth.user;
 
     });
   }
-
-
   login(data) {
-
     this.fauth.auth.signInWithEmailAndPassword(data.email, data.password).then(res => {
       console.log('ok', res);
-      this.router.navigateByUrl('/testdash');
+      this.router.navigateByUrl('/dashbord');
       })
       .catch(err => {
         console.log('not ok:', err.message);
       });
   }
-
   logout() {
-    this.fauth.auth.signOut();
+  this.fauth.auth.signOut();
+  this.router.navigateByUrl('/login');
   }
 
   getUser() {
-    return this.user;
+   return this.user;
   }
 
   signup(value) {
@@ -49,5 +47,7 @@ user;
         }, err => reject(err));
     });
   }
-
+getAuth() {
+return this.fauth.authState.pipe(map(myAuth => myAuth));
+}
 }

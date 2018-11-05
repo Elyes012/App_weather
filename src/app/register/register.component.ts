@@ -11,15 +11,9 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  item: Observable<any[]>;
-  itemusers;
-email;
-password;
+
   formregister: FormGroup;
   constructor(private fb: FormBuilder, private router: Router, private db: AngularFireDatabase, public authService: AuthService) {
-    this.itemusers = db.list('UsersList').valueChanges();
-
-
     this.formregister = this.fb.group({
       password: ['', [Validators.required, Validators.minLength(8)]],
       email: ['', [Validators.required, Validators.email]],
@@ -34,7 +28,8 @@ password;
         this.router.navigateByUrl('/login');
       }
 
-     /* this.db.list('UsersList').push({
+     /* push data to firebase
+     this.db.list('UsersList').push({
         firstname: this.formregister.value.firstname,
         lastname: this.formregister.value.lastname,
         city: this.formregister.value.city,
