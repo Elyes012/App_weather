@@ -3,6 +3,7 @@ import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,15 +14,12 @@ export class LoginComponent implements OnInit {
   password;
   loginForm: FormGroup;
   message: String;
-  constructor(public authService: AuthService, private router: Router, private fb: FormBuilder) { 
-  
+  constructor(public authService: AuthService, private router: Router, private fb: FormBuilder) {
     this.loginForm = this.fb.group({
       password: ['', [Validators.required, Validators.minLength(8)]],
       email: ['', [Validators.required, Validators.email]],
     });
    }
-
- 
 
   ngOnInit() {
   }
@@ -29,18 +27,14 @@ export class LoginComponent implements OnInit {
 
   logingmail() {
     this.authService.loginGoogle();
-      this.router.navigate(['/testdash']);
   }
 
 
 
   loginSimple() {
-  
     if (this.loginForm.valid) {
     this.authService.login(this.loginForm.value);
-         
-        }
-  
+  }
     }
-      
+
     }

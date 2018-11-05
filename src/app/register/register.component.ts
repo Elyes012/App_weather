@@ -12,7 +12,7 @@ import { AuthService } from '../auth.service';
 })
 export class RegisterComponent implements OnInit {
   item: Observable<any[]>;
-  itemusers; //: AngularFireList<any>;
+  itemusers;
 email;
 password;
   formregister: FormGroup;

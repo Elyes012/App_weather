@@ -14,10 +14,10 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-sm"*ngFor="let item of log | async">
-               
+		<div class="col-sm"*ngFor="let item of items | async">
+
 			<div class="weather-card one" >
-            
+
 				<div class="top">
 					<div class="wrapper">
 						<div class="mynav">
@@ -26,11 +26,12 @@
                         </div>
                         <h4 class="location"> {{item.time | date : 'short'}}</h4>
                         <h1 class="heading">Clear night</h1>
-                    
+
+                    <button (click)="deleteItem(item.key)"> delete</button>
                         <h3 class="location">{{item.data.name }}</h3>
-                        
+
 						<p class="temp">
-							<span class="temp-value">{{item.data.main.temp-273.15}}</span>
+							<span class="temp-value">{{roundValue(item.data.main.temp-273.15)}}</span>
 							<span class="deg">0</span>
 							<a href="javascript:;"><span class="temp-type">C</span></a>
 						</p>
@@ -51,7 +52,7 @@
 								<span class="lnr lnr-cloud condition">
 									<span class="temp">21<span class="deg">0</span><span class="temp-type">C</span></span>
                                 </span>
-                      
+
 							</li>
 						</ul>
 					</div>
@@ -60,7 +61,7 @@
 		</div>
 	</div>
 </div>
- 
+
 
 
 

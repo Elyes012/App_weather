@@ -3,6 +3,8 @@ import { WeatherService } from '../weather.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-testdash',
   templateUrl: './testdash.component.html',
@@ -25,7 +27,7 @@ export class TestdashComponent implements OnInit {
     {name: 'London', lat: '-0.13', lon: '51.51'},
     {name: 'Tokyo', lat: '136.76', lon: '35.68'}];*/
       // tslint:disable-next-line:max-line-length
-      constructor(private weatherService: WeatherService, private fb: FormBuilder, private sanitizer: DomSanitizer, private db: AngularFireDatabase) {
+      constructor(private weatherService: WeatherService, private fb: FormBuilder, private sanitizer: DomSanitizer, private db: AngularFireDatabase, private authService: AuthService, private route: Router) {
         this.math = Math;
         this.dataWeather = db.list('DataWeatherUser').valueChanges();
         this.logWeather = db.list('DataWeatherUser').snapshotChanges();
@@ -49,7 +51,7 @@ export class TestdashComponent implements OnInit {
     getWeather() {
       this.weatherService.getWeather(this.city).subscribe(res => {
         this.info = res.json();
-        this.urlWindfinder = 'https://cors.io/?https://www.windfinder.com/#7/' + this.info.coord.lat + '/' + this.info.coord.lon;
+        this.urlWindfinder = 'https://www.windy.com/?' + this.info.coord.lat + '/' + this.info.coord.lon;
         this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.urlWindfinder );
         console.log('url video', this.videoUrl);
       });
@@ -63,5 +65,8 @@ time: Date.now(),
     });
   });
 }
-
+outLog() {
+  this.authService.logout();
+  this.route.navigateByUrl('/login');
+}
   }
